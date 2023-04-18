@@ -1,6 +1,6 @@
 baseURL = "https://blog.trontria.com/"
 languageCode = "en-us"
-title = "Tròn trịa"
+title = "tròn trịa"
 theme = "PaperMod"
 
 [[params.socialIcons]]
@@ -15,10 +15,10 @@ url = "https://www.instagram.com/nquangtrung"
 
 [params.profileMode]
 enabled = true
-title = "TRÒN TRỊA"
+title = "the adventures of trung tròn trịa"
 subtitle = "on dev, life, and everything besides"
 imageUrl = "https://firebasestorage.googleapis.com/v0/b/trontria-blog.appspot.com/o/home%2Ftop.png?alt=media&token=ee2a5a7b-7414-4e84-9b2f-59052696bf39"
-imageTitle = "would you run with me?"
+imageTitle = "would you join me for a quick run?"
 imageWidth = 120
 imageHeight = 120
 [[params.profileMode.buttons]]
