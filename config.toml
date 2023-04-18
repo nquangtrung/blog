@@ -11,7 +11,7 @@ name = "Instagram"
 url = "https://www.instagram.com/supertro_n_"
 [[params.socialIcons]]
 name = "Github"
-url = "https://www.instagram.com/nquangtrung"
+url = "https://github.com/nquangtrung"
 
 [params.profileMode]
 enabled = true
