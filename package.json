@@ -1,0 +1,13 @@
+{
+  "name": "blog.trontria.com",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "nquangtrung <nquangtrung@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^18.15.11",
+    "axios": "^1.3.5",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4"
+  }
+}
