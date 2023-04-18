@@ -2,3 +2,4 @@ articles.json
 comments.json
 node_modules
 images/*
+public/*
