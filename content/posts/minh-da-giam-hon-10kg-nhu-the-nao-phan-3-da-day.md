@@ -1,7 +1,7 @@
 ---
 title: Mình đã giảm hơn 10kg như thế nào? - Phần 3 - Tập tạ, HM và Đau dạ dày
-date: 2023-04-20T04:15:31.727Z
-draft: true
+date: 2023-04-23T06:18:34.147Z
+draft: false
 ---
 
 Năm 2022, ngoài LBM mình còn đăng ký cả VNExpress Midnight Marathon, nhưng giải _mít chín_ mình chỉ chạy 5km với mục tiêu chạy 5km sub 30. Kết quả là 27:36 pace 5:30.
@@ -12,7 +12,7 @@ Từ đầu tháng 10, thời tiết bắt đầu lạnh, không đi bơi đư�
 
 Trong 1 buổi chạy sáng, ngang qua 1 cái gym đã ở đấy từ lâu nhưng hôm đó mới phát hiện, mình vào để tham khảo, và sau khi tham khảo 15ph, impulse buy luôn 30 buổi tập PT ở phòng gym đó.
 
-![Tập gym](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/are3m3crc8kup5qvfqjo.jpg)
+![Tập gym](https://res.cloudinary.com/dhqxdkpus/image/upload/w_720,c_scale/minh-da-giam-hon-10kg-nhu-the-nao-phan-3/weight-1.jpg)
 
 I think this is my best impulse buy. Lịch tập từ khi tập tạ là 1 tuần 6 buổi, 3 buổi tập tạ, 2 buổi speed drills và 1 buổi long rung.
 
@@ -20,7 +20,7 @@ I think this is my best impulse buy. Lịch tập từ khi tập tạ là 1 tu�
 
 Sang năm 2023, giải chạy đầu tiên năm mới là giải VIHM, chạy 10km với target sub 1, kết quả là 55:31 pace 5:28, first 5k split is 26:30.
 
-![VIHM](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/wf1dimpteol8vko0o1jp.jpg)
+![VIHM](https://res.cloudinary.com/dhqxdkpus/image/upload/w_720,c_scale/minh-da-giam-hon-10kg-nhu-the-nao-phan-3/weight-2.jpg)
 
 Sau khi được kết quả vượt mong đợi, mục tiêu của mình đặt là hoàn thành HM sub 2 trong năm 2023. Và mình bắt đầu tập cho HM.  
 
@@ -36,10 +36,17 @@ Sau khi phát hiện bị loét dạ dày, mình phải uống thuốc trong vò
 
 Một vấn đề nữa mà mình bắt đầu thấy là đầu gối phải bắt đầu có dấu hiệu overwork. Không đau, nhưng mỏi, thường xuyên mỏi và hồi phục rất chậm. Nên mình phải tạm thời dừng chạy 1 thời gian và thay bằng đạp xe.
 
-![Đạp xe](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/xuna39ybozjqvsj7gzdj.jpg)
+![Đạp xe](https://res.cloudinary.com/dhqxdkpus/image/upload/w_720,c_scale/minh-da-giam-hon-10kg-nhu-the-nao-phan-3/weight-3.jpg)
 
 Cũng may xe đạp cũ của mình vẫn dùng được, chỉ cần mua thêm rulo để đạp là có ngay máy đạp xe trong nhà. Lịch tập bây giờ đã thành trong tuần 2 buổi đạp xe 15km ở HR Zone 4, speed drills, cuối tuần thì đạp xe ở HR Zone 2, 15km và chạy 5km.
 
 ## Tây Hồ Half Marathon
+
+Trước THHM tầm 1 tuần mình đã chạy trở lại, nhưng giảm đi, chỉ chạy nhẹ 5km trong tuần, và cuối tuần chạy một vòng hồ Tây để quen đường.
+Mục tiêu ban đầu của mình là càng gần với mốc 2h càng tốt. Nếu được 2h06 là tốt nhất (pace gần 6), kết quả là chậm hơn tầm 2 phút.
+![THHM](https://res.cloudinary.com/dhqxdkpus/image/upload/w_720,c_scale/minh-da-giam-hon-10kg-nhu-the-nao-phan-3/weight-4.jpg)
+Tầm 11km đầu chạy khá là thoáng chân, pace trên dưới 5:45, mình không thấy mệt, hơi thở nặng nhưng đều đặn. Pace này nhanh hơn khá nhiều so với pace mục tiêu, nhưng là pace sub 2 nên mình giữ pace này. Từ km thứ 11, mình giảm tốc độ lại còn pace 6 để giữ sức cho đoạn cuối, đến lúc này mình vẫn chưa gặp vấn đề gì nhiều. Nhưng sau khi chạy tầm 1 tiếng rưỡi, chân mình bắt đầu cảm thấy chuột rút, và phải giảm tốc độ đi khá nhiều, phải đi bộ rất nhiều ở 3km cuối. Kết quả là từ khá chắc chắn pace sub 2, xuống còn 2:08.  
+Nói chung là đây không phải là quãng thời gian dài nhất mà mình chạy liên tục, nhưng phần lớn mình chỉ chạy 1 tiếng rưỡi, và thời gian ngay trước giải này mình không chạy quá nhiều, nên chắc chân không quen với cường độ cao trong thời gian dài như thế. Nên chắc phải rút kinh nghiệm, phải hoàn thành được quãng đường dài hơn trước khi có thể bung 100% sức trong giải này.
+
 
 _To be continued._
