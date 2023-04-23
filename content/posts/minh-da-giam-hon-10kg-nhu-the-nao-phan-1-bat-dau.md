@@ -7,6 +7,7 @@ draft: false
 
 Chính xác lúc viết thì mình đã giảm được 13kg: từ 86kg xuống còn 73kg. Không phải quá lớn, nhưng mình thấy đáng được bản thân tự động viên để có tinh thần giảm tiếp.
 Thực ra bài này đáng nhẽ đã được viết từ đầu tháng 3, để đánh dấu mốc 1 năm chạy bộ, bài tập mà mình nghĩ đã giúp mình giảm cân tốt nhất. Mỗi tội thời điểm đó mình đang bị cái dạ dày nó hành cho ăn không được, tập cũng không xong, chả có sức để làm gì cả, cho nên đành dời lại 1 tháng.
+Mấy phần đầu mình sẽ kể lể dài dòng về quá trình hơn 1 năm giảm cân, từ phần 4 mình sẽ nói chi tiết hơn về chế độ luyện tập và dinh dưỡng.
 
 ## Trước khi bắt đầu và chấn thương kéo dài do lần tập trước đó
 
