@@ -12,7 +12,7 @@ Thực ra bài này đáng nhẽ đã được viết từ đầu tháng 3, đ�
 
 Buổi chạy đầu tiên của mình là ngày 10/3/2022, nhưng thực tế là quá trình giảm cân của mình đã bắt đầu trước đó vài tháng.
 
-![Đây là mình hồi tháng 10/2021](https://firebasestorage.googleapis.com/v0/b/trontria-blog.appspot.com/o/minh-da-giam-hon-10kg-nhu-the-nao-phan-1-bat-dau%2Fmywsxgwreyhe2gk77t6p.jpg?alt=media&token=edb6252c-7558-40ac-a9f4-209cbcf92f8d)
+![Đây là mình hồi tháng 10/2021](https://res.cloudinary.com/dhqxdkpus/image/upload/w_720,c_scale/minh-da-giam-hon-10kg-nhu-the-nao-phan-1-bat-dau/bat-dau-1.jpg)
 
 Ảnh này là hồi tháng 10/2021, thời điểm gần nhất mà mình có tập là tầm 1 năm trước, tức tầm tháng 9/2020, mình bắt buộc phải dừng lại do chấn thương gân nối dài bàn chân trái, lý do chấn thương: **tập quá sức**. Chấn thương kéo dài 6 tháng, và phải thêm 6 tháng mình mới đi lại bt được, và đến bây giờ bàn chân trái vẫn yếu hơn tương đối so với bàn chân phải.
 
@@ -26,7 +26,7 @@ Mình leo cầu thang trong chung cư mình đang ở, tổng có 26 tầng, nh�
 
 Bài này là 1 bài tập cardio này khá là hiệu quả, chỉ trong vòng tầm 1 tháng, mình đã leo liên tục được 26 tầng, nhịp tim cao nhất (Max heart rate - MHR) chỉ lên đến 170, và RHR của mình lúc này đã ổn định hơn ở trong vùng 80 - 85. Still, not great, but it is an improvement.
 
-![Tháng 12/2022](https://firebasestorage.googleapis.com/v0/b/trontria-blog.appspot.com/o/minh-da-giam-hon-10kg-nhu-the-nao-phan-1-bat-dau%2Fcn7lf6ugwwxy7r6nz0va.jpg?alt=media&token=dcc07d46-83bd-4452-9c2f-36a96e6a384f)
+![Tháng 12/2022](https://res.cloudinary.com/dhqxdkpus/image/upload/w_720,c_scale/minh-da-giam-hon-10kg-nhu-the-nao-phan-1-bat-dau/bat-dau-2.jpg)
 Bụng vẫn nhìn rõ luôn. Sau 3 tháng leo cầu thang, cũng là sau tết 2022 tầm 1 tháng, mình đã có thể leo 30 tầng liên tục một cách đơn giản, RHR xuống còn 78 - 80, cân nặng lúc này của mình giảm xuống còn 81, 82kg. Nhưng nó bắt đầu đơn giản quá và mình bắt đầu cảm thấy chán, lúc này cũng là lúc chấn thương bàn chân trái đã ổn định, mình bắt đầu tìm hiểu các bài tập khác cho đỡ chán.
 
 Bây giờ các hạn chế của COVID bị loại bỏ gần hết, các giải chạy bắt đầu rục rịch tổ chức, và Long Bien marathon là giải đầu tiên mình thấy quảng cáo trên Facebook. Lúc này là cuối tháng 2/2022.

@@ -17,7 +17,7 @@ url = "https://github.com/nquangtrung"
 enabled = true
 title = "the adventures of trung tròn trịa"
 subtitle = "on dev, life, and everything besides"
-imageUrl = "https://firebasestorage.googleapis.com/v0/b/trontria-blog.appspot.com/o/home%2Ftop.png?alt=media&token=ee2a5a7b-7414-4e84-9b2f-59052696bf39"
+imageUrl = "https://res.cloudinary.com/dhqxdkpus/image/upload/w_120,h_120,c_scale/home/top.png"
 imageTitle = "would you join me for a quick run?"
 imageWidth = 120
 imageHeight = 120
