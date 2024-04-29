@@ -1,6 +1,6 @@
 ---
 title: A quick thought on The Sympathizer by Viet Thanh Nguyen
-date: 2023-04-30T00:00:00.000Z
+date: 2024-04-30T00:00:00.000Z
 draft: false
 ---
 
