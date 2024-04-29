@@ -8,6 +8,8 @@ Finished reading this book the night before 30/4, this is my brief impression on
 
 #### Why did I read this book?
 
+![Cover](https://firebasestorage.googleapis.com/v0/b/trontria-blog.appspot.com/o/a-quick-thought-on-the-sympathizer%2Fthe-sympathizer.png?alt=media&token=d4a76680-3454-45c8-a0a5-552203f54246)
+
 Being brought up in Vietnam, almost everything I've ever known about the aftermath of the war come, either from school history textbooks, or the occasional state-sponsored documentaries. The fate of those Vietnamese refugees, or boat people, right after 30/4 are rarely ever mentioned in these heavily sanctioned media.  
 Western newspapers' reviews on this book would unvaryingly state that this book bring a fresh new perpective from the mind of these refugees, in constrast with their war movies, churned out by the American propaganda machine.  
 I have the same thought, I have always wonder about their stories, their feelings and their lives. This book gave me a glimpse of the answer to the questions I've often conjured up within my twisted and overthinking mind.  
