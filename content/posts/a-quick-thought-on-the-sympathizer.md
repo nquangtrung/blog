@@ -4,7 +4,7 @@ date: 2024-04-29T16:00:00.000Z
 draft: false
 ---
 
-Finished reading this book right before 30/4, this is my brief impression on it.
+Finished reading this book the night before 30/4, this is my brief impression on it.
 
 #### Why did I read this book?
 
