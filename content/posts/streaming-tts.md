@@ -4,6 +4,8 @@ date: 2026-06-12T15:27:09+02:00
 draft: false
 ---
 
+![image](https://firebasestorage.googleapis.com/v0/b/trontria-blog.appspot.com/o/streaming-tts%2F1_-V47O9e3T_LxR3P-lcpR0g.webp?alt=media&token=a60122ee-9256-4999-b734-70df2077f03e)
+
 Have you ever chatted with an AI and wished it could talk back in real-time without that awkward "thinking" pause? In this post, I'll walk you through how I built a low-latency streaming Text-to-Speech (TTS) system. The goal is simple: start playing the audio as soon as the first few words are generated, making the experience feel much more natural and responsive.
 
 ## 1. The Challenge: Killing the Latency
