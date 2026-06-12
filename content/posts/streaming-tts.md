@@ -65,7 +65,47 @@ sequenceDiagram
 
 ### Backend Synthesis: The Conductor
 
-The Firebase function acts as the orchestrator. It establishes a gRPC stream with GCP, monitors the Firestore document for changes in the AI's response, and streams the synthesized audio back to the client.
+The Firebase function acts as the orchestrator. It establishes a gRPC stream with GCP using the `@google-cloud/text-to-speech` library. This is the Node.js implementation of Google's [bi-directional streaming synthesis](https://cloud.google.com/text-to-speech/docs/create-audio-text-streaming), which allows sending text fragments and receiving audio PCM data concurrently.
+
+The `streamTts` helper simplifies the gRPC event handling into a clean interface. Here's how it's implemented using the npm library:
+
+```typescript
+// A simplified look at how streamTts is implemented
+async function streamTts({ onChunkReady, onEnded }) {
+  const client = new TextToSpeechClient();
+  const stream = client.streamingSynthesize();
+
+  // Handle incoming PCM data from GCP
+  stream.on("data", (response) => {
+    if (response.audioContent) {
+      onChunkReady(response.audioContent);
+    }
+  });
+
+  stream.on("end", () => onEnded());
+
+  // Send stream config only once
+  stream.write({
+    streamingConfig: {
+      voice: {
+        // Add your configuration
+      },
+    },
+  });
+
+  return {
+    processInput: (text: string) => {
+      // Send text bits to the stream as they arrive
+      stream.write({
+        input: { text },
+      });
+    },
+    endStream: () => stream.end(),
+  };
+}
+```
+
+With the helper established, the main logic monitors and pipes content in:
 
 ```typescript
 // 1. Initialize synthesis stream and handle chunk delivery
@@ -99,32 +139,56 @@ while (true) {
 }
 ```
 
-### Audio Processing Worklet (`pcm-processor.js`)
+### Audio Processing Worklet
 
 The `PCMProcessor` is the heart of the client-side playback. It maintains a queue of incoming audio chunks and ensures that the `AudioContext` always has samples to play by pulling from the queue during each process cycle.
 
+Importantly, it also listens for an `END_OF_STREAM` signal to know when to gracefully stop.
+
 ```javascript
 class PCMProcessor extends AudioWorkletProcessor {
+  constructor() {
+    super();
+    this.bufferQueue = [];
+    this.hasEnded = false;
+
+    // Listen for data or signals from the main thread
+    this.port.onmessage = (event) => {
+      if (event.data === "END_OF_STREAM") {
+        this.hasEnded = true;
+      } else {
+        this.bufferQueue.push(event.data);
+      }
+    };
+  }
+
   process(inputs, outputs) {
     const output = outputs[0];
     const channel = output[0];
 
     if (this.bufferQueue.length === 0) {
-      channel.fill(0); // Play silence if buffer is empty
+      if (this.hasEnded) return false; // Stop the processor once finished
+      channel.fill(0); // Play silence if buffer is empty but stream continues
       return true;
     }
 
     let chunk = this.bufferQueue[0];
-    // Copy chunk data to output buffer and manage queue...
-    channel.set(chunk.subarray(0, channel.length));
-    this.bufferQueue[0] = chunk.subarray(channel.length);
+    // Copy chunk data to output buffer
+    const size = Math.min(chunk.length, channel.length);
+    channel.set(chunk.subarray(0, size));
+
+    // Manage the remaining data in the chunk
+    this.bufferQueue[0] = chunk.subarray(size);
+    if (this.bufferQueue[0].length === 0) {
+      this.bufferQueue.shift();
+    }
 
     return true;
   }
 }
 ```
 
-### The Client Pipeline (`browser-audio.ts`)
+### The Client Pipeline
 
 This helper script sets up the connection between the `AudioWorklet` and a `MediaStreamDestination`. This allows the generated audio to be used like any other media stream in your app.
 
@@ -139,33 +203,64 @@ export async function createCustomAudioStream(sampleRate: number) {
   pcmNode.connect(streamDestination);
   return {
     customStream: streamDestination.stream,
-    writeChunk: (data: Float32Array) => pcmNode.port.postMessage(data),
+    writeChunk: (data) => pcmNode.port.postMessage(data),
   };
 }
 ```
 
-### Putting it all together: The Orchestration Hook (`useChatTts.ts`)
+### Putting it all together: The Orchestration Hook
 
-The `useChatTts` hook is where the magic happens. It watches for new messages, calls our Firebase function, and pipes the resulting stream of bytes directly into the audio worklet.
+The hook is where the magic happens. It watches for new messages, calls our Firebase function, and pipes the resulting stream of bytes directly into the audio worklet.
 
 ```typescript
-for await (const chunk of stream) {
-  if (chunk.type === "signal") {
-    // Handle special signals (like end of stream)
-    if (chunk.event === "end") {
-      writeEndSequence(); // Signal the worklet to finish up
+const { customStream, writeChunk } = createCustomAudioStream(24000); // GCP TTS LINEAR16 bitrate is 24kHz
+onNewMessage((message) => {
+  const { stream } = await ttsMessage.stream({ message });
+
+  for await (const chunk of stream) {
+    if (chunk.type === "signal") {
+      // Handle special signals (like end of stream)
+      if (chunk.event === "end") {
+        writeEndSequence(); // Signal the worklet to finish up
+      }
+    } else {
+      const uint8Array = Uint8Array.from(chunk.data);
+      writeUint8AudioChunk(uint8Array); // Push to our buffering store
     }
-  } else {
-    const uint8Array = Uint8Array.from(chunk.data);
-    writeUint8AudioChunk(uint8Array); // Push to our buffering store
   }
-}
+});
 ```
 
 ## 4. A Few Pro-Tips (Key Considerations)
 
-- **Normalization**: Binary PCM data from GCP typically comes as 16-bit signed integers. You'll need to convert these to 32-bit floats (in the range of -1.0 to 1.0) before the Web Audio API can use them.
-- **End of Stream**: I used a special bit sequence (`END_SEQUENCE`) to signal the `AudioWorklet` that the AI has finished talking. This lets it gracefully close the `AudioContext` without any pops or clicks.
+- **Normalization and `writeUint8AudioChunk`**: Binary PCM data from GCP typically comes as 16-bit signed integers. You'll need to convert these to 32-bit floats (in the range of -1.0 to 1.0) before the Web Audio API can use them.
+
+  ```typescript
+  function writeUint8AudioChunk(uint8Array: Uint8Array) {
+    // 1. Convert the 8-bit buffer to 16-bit integers
+    const int16Buffer = new Int16Array(uint8Array.buffer);
+
+    // 2. Normalize to 32-bit floats (dividing by 2^15)
+    const float32Buffer = new Float32Array(int16Buffer.length);
+    for (let i = 0; i < int16Buffer.length; i++) {
+      float32Buffer[i] = int16Buffer[i] / 32768.0;
+    }
+
+    // 3. Send the normalized chunk to the AudioWorklet
+    writeChunk(float32Buffer);
+  }
+  ```
+
+- **Graceful Shutdown with `writeEndSequence`**: Because it is streaming, we don't know when it ends, so we have to send the end sequence to `pcm-processor`. The processor when receive this signal will in turn tell the stream, and the audio player to stop. This lets it gracefully close the `AudioContext` without any "pops" or "clicks."
+
+  ```typescript
+  function writeEndSequence() {
+    // Send a plain string signal to the processor
+    // so it knows no more data is coming.
+    writeChunk("END_OF_STREAM");
+  }
+  ```
+
 - **Smart Buffering**: The `PCMProcessor` is designed to handle small hiccups in network latency by maintaining a local buffer queue. It’s a lifesaver for keeping the speech smooth!
 
 And there you have it! A fully functional, low-latency streaming TTS system that makes AI interactions feel just a little more human. Happy coding!
