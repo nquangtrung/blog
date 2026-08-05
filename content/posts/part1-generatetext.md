@@ -4,6 +4,8 @@ date: 2026-08-05T20:07:22+02:00
 draft: false
 ---
 
+![image](https://firebasestorage.googleapis.com/v0/b/trontria-blog.appspot.com/o/part1-generatetext%2Fgopher5logo.jpg?alt=media&token=f0c2f8de-7750-474b-b656-03d038ffba17sss)
+
 Hey there! 👋 Welcome! I'm excited to share this journey with you. We're building our own AI SDK in Go, and honestly, it's a great way to level up your Go skills while creating something useful.
 
 If you've ever wondered how libraries like the OpenAI SDK work under the hood, this is our chance to learn together! In this first part, we'll build the **foundation** using three powerful patterns: **Interfaces**, **Composition** (Go's take on inheritance), and the **Factory Pattern**. 
