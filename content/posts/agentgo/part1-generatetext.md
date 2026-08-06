@@ -4,7 +4,7 @@ date: 2026-08-05T20:07:22+02:00
 draft: false
 ---
 
-![image](https://firebasestorage.googleapis.com/v0/b/trontria-blog.appspot.com/o/part1-generatetext%2Fgopher5logo.jpg?alt=media&token=5905cc4b-b3d1-4c30-9f30-1911a3591ce4)
+![image](https://firebasestorage.googleapis.com/v0/b/trontria-blog.appspot.com/o/part1-generatetext%2Fgopher5logo.webp?alt=media&token=0680c807-c773-4013-9755-629fd4d4fe17)
 
 Hey there! 👋 Welcome! I'm excited to share this journey with you. We're building our own AI SDK in Go, and honestly, it's a great way to level up your Go skills while creating something useful.
 
