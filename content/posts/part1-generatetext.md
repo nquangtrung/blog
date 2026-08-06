@@ -129,7 +129,7 @@ This is the beauty of Go's composition! Any code using our SDK can just work wit
 
 ## The Factory Pattern: Smart Provider Creation
 
-Here's where the magic happens! The **Factory Pattern** hides complexity. Instead of making users say "I need an OpenAI provider with this API key," they just say "I want gpt-4," and we figure out the rest.
+Here's where the magic happens! The **Factory Pattern** hides complexity. Instead of making users say "I need an OpenAI provider with this API key," they just say "I want gpt-5," and we figure out the rest.
 
 The factory function does three things:
 1. Detect which provider we need (by checking model name prefix)
@@ -230,12 +230,14 @@ You've built a solid foundation! In the next part, we'll explore:
 
 - **Part 2**: Streaming Responses—learning how to handle long-running AI tasks where responses come in chunks instead of all at once
 
+More parts will be available in the future covering advanced topics like error handling, multiple providers, and building full agents! 🚀
+
 ## TL;DR (What You Just Learned)
 
 - **Interfaces**: Define a contract that all providers must follow (`AgentProvider`)
 - **Composition**: Use embedding to share code without inheritance (`AgentProviderImpl`)
 - **Factory Pattern**: Hide complexity behind a simple function (`CreateAgentProvider()`)
-- **Model Detection**: Smart routing based on model name ("gpt-4" → OpenAI)
+- **Model Detection**: Smart routing based on model name ("gpt-5" → OpenAI)
 - **Standardized Output**: Convert different APIs into one format users understand
 
 You've now learned the pattern that's used in production SDKs everywhere. These aren't just theoretical concepts—they're practical tools for building real software! 💪

@@ -1,4 +1,12 @@
 {{ .Page.Store.Set "hasMermaid" true }}
-<div class="mermaid">
+<div class="mermaid" >
   {{ .Inner | safeHTML }}
 </div>
+<style>
+  .mermaid {
+    background-color: #1f2020;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    padding: 1rem;
+  }
+</style>
