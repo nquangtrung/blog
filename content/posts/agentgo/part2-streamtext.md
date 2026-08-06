@@ -4,6 +4,8 @@ date: 2026-08-06T14:30:18+02:00
 draft: false
 ---
 
+![image](https://firebasestorage.googleapis.com/v0/b/trontria-blog.appspot.com/o/part2-streamtext%2F31a89df3-bca3-4892-8fbc-37000fc98637.jpeg?alt=media&token=3c6da5ee-2b73-4237-8bb8-545e9a8f003d)
+
 Welcome back! 👋 In Part 1, we built a solid foundation with `GenerateText`—a simple function that gives us complete responses all at once. But here's the problem: **What happens when Claude writes you a 1000-word essay? Or GPT-5 generates a complex JSON response?** Do you really want to wait for the *entire* thing before showing anything to the user?
 
 That's where **streaming** comes in. 🌊
