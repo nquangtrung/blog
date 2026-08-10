@@ -1,6 +1,6 @@
 ---
 title: "Learning Go Concurrency with a PubSub Broker - Part 1: Architecture & Patterns"
-date: 2026-08-11T20:07:22+02:00
+date: 2026-08-11T08:07:22+02:00
 draft: false
 ---
 
