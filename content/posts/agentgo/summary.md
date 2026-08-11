@@ -4,8 +4,6 @@ date: 2026-08-05T20:07:22+02:00
 draft: false
 ---
 
-# AgentGo: Building an AI SDK Clone in Go
-
 ## Overview
 
 **AgentGo** is a comprehensive journey into building your own AI SDK in Go, inspired by popular libraries like the OpenAI SDK. This series teaches practical Go patterns while creating something genuinely useful: a flexible, extensible SDK that can work with multiple AI providers.

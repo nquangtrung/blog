@@ -4,8 +4,6 @@ date: 2026-08-11T12:41:31+02:00
 draft: false
 ---
 
-# GoBroke: Building a Pub/Sub Broker in Go
-
 ## Overview
 
 **GoBroke** is a hands-on exploration of Go's concurrency patterns through building a pub/sub (publish-subscribe) broker from scratch. This series dives deep into goroutines, channels, context, and mutexes—the fundamental building blocks of concurrent Go applications.
