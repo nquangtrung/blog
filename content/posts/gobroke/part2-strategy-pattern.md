@@ -1,6 +1,6 @@
 ---
 title: "Learning Go Concurrency with a PubSub Broker - Part 2: Strategy Pattern for Subscribers"
-date: 2026-08-12T12:41:31+02:00
+date: 2026-08-12T08:41:31+02:00
 draft: false
 ---
 
