@@ -70,7 +70,7 @@ type Strategy interface {
 }
 ```
 
-This follows a **Builder Pattern** too—you chain methods to configure the strategy. Let's see how!
+This follows a **Builder Pattern** too - you chain methods to configure the strategy. Let's see how!
 
 ## Creating a Strategy
 
