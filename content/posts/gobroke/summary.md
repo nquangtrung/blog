@@ -14,6 +14,8 @@ A pub/sub broker is a messaging system where publishers send messages to topics 
 
 - **[Part 1: Architecture & Patterns](../part1-pubsub-and-concurrency/)** - Learn how GoBroke uses goroutines, channels, context, and mutexes to build a thread-safe message broker
 - **[Part 2: Strategy Pattern for Subscribers](../part2-strategy-pattern/)** - Explore design patterns for flexible and maintainable broker implementations
+- **[Part 3: Graceful Shutdown](../part3-graceful-shutdown/)** - Explore how to gracefully shutdown the broker
+- **[Part 4: From Strategy Union to Chain](../part4-strategy-chain-rework/)** - Rework the union pattern into a more flexible chain of resopnsibilties
 
 ## About This Series
 
