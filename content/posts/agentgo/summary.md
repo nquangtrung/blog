@@ -15,6 +15,7 @@ By cloning how modern AI SDKs work, you'll master design patterns (Interfaces, C
 - **[Part 1: GenerateText](../part1-generatetext/)** - Build the foundation using Interfaces, Composition, and the Factory Pattern to create a simple GenerateText function that supports multiple AI providers
 - **[Part 2: StreamText & Polymorphic Parts](../part2-streamtext/)** - Implement streaming responses to handle real-time AI output efficiently
 - **[Part 3: Messages & Unit Testing](../part3-messages-and-testing/)** - Explore message handling and testing strategies for robust SDK implementations
+- **[Part 4: Tool Calling Loops with FSM](../part4-tool-calling-fsm/)** - Explore finite state machines to manage complex tool-calling loops in AI frameworks
 
 ## About This Series
 
