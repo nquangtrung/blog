@@ -4,7 +4,7 @@ date: 2026-08-30T11:12:18+02:00
 draft: false
 ---
 
-![image](https://firebasestorage.googleapis.com/v0/b/trontria-blog.appspot.com/o/part4-tool-calling-fsm%2Fagentgo-part4.webp?alt=media&token=084187d5-c1f9-4125-ba89-a982b787c21d)
+![image](https://firebasestorage.googleapis.com/v0/b/trontria-blog.appspot.com/o/part4-tool-calling-fsm%2Fagentgo-part4.webp?alt=media&token=745dc773-2274-426e-9ead-4b38b6f4ec7c)
 
 Welcome back! 👋 We're at the exciting part now. In Parts 1-3, we built the foundations: generating text, streaming responses, and managing conversations. But here's the real magic that makes AI **agentic**—**tool calling**.
 
@@ -308,54 +308,7 @@ Return `nil` state to signal FSM termination.
 
 ## How It All Works Together: The State Machine Diagram
 
-```mermaid
-stateDiagram-v2
-    [*] --> StartState
-    
-    StartState --> StepStartState: Initialize context
-    
-    StepStartState --> PredicateState: Create step
-    
-    PredicateState --> StepEndState_End: textGenerated == true
-    PredicateState --> PrepareTextGenerationState: No tools or<br/>no conditions
-    PredicateState --> ToolResolveState: Can proceed to<br/>next step
-    PredicateState --> StepEndState_End: End condition met
-    
-    ToolResolveState --> StepEndState_Loop: Tool calls<br/>completed
-    
-    StepEndState_Loop --> StepStartState: toEnd = false<br/>(Loop back)
-    
-    PrepareTextGenerationState --> TextGenerationState: stream = false
-    PrepareTextGenerationState --> TextStreamState: stream = true
-    
-    TextGenerationState --> AfterTextGenerationState: Generate complete
-    TextStreamState --> EndState: Stream complete
-    
-    AfterTextGenerationState --> StepEndState_End: Mark text done
-    
-    StepEndState_End --> EndState: toEnd = true
-    
-    EndState --> [*]: Return nil state
-    
-    note right of PredicateState
-        Decision point:
-        - Check end conditions
-        - Decide: tools, text, or end?
-    end note
-    
-    note right of ToolResolveState
-        Loop core:
-        - Call LLM for tools
-        - Execute tools
-        - Accumulate results
-    end note
-    
-    note right of StepEndState_Loop
-        Emit step end,
-        accumulate usage,
-        return to step start
-    end note
-```
+![image](https://firebasestorage.googleapis.com/v0/b/trontria-blog.appspot.com/o/part4-tool-calling-fsm%2Fagentgo-fsm.webp?alt=media&token=e34cedb6-fcee-4d28-b6a6-be8fe8ad68ea)
 
 Notice the structure:
 - **Starting phase**: `StartState` → `StepStartState` → `PredicateState`
