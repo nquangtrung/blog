@@ -1,8 +1,10 @@
 ---
 title: "How to Make an AI SDK Clone in Golang - Part 6 - Interrupts and Resume in Pregel Graph"
 date: 2026-09-25T15:04:29+02:00
-draft: true
+draft: false
 ---
+
+![image](https://firebasestorage.googleapis.com/v0/b/trontria-blog.appspot.com/o/part6-interrupts-and-resume%2Fmiddleware.webp?alt=media&token=c91a6eff-edda-4983-ab00-f826334f6a8d)
 
 In Part 5, I switched the loop engine to a Pregel-like graph. That gave me better branching and superstep control.
 
@@ -149,6 +151,88 @@ result, err = g.Resume(ctx, interrupts[0].ThreadID, map[string]any{
 	interrupts[0].Name: "approved",
 }, config)
 ```
+
+---
+
+## How Middleware Hooks Into Interrupts
+
+Both `generate_text.go` and `stream_text.go` accept two middleware lists via `Params`:
+
+```go
+type Params struct {
+    // ...
+    ToolMiddlewares []ToolMiddleware
+    StepMiddlewares []StepMiddleware
+}
+```
+
+They are injected into `context.Context` before the graph starts:
+
+```go
+ctx = context.WithValue(ctx, models.ToolMiddlewaresContextKey, params.ToolMiddlewares)
+ctx = context.WithValue(ctx, models.StepMiddlewaresContextKey, params.StepMiddlewares)
+```
+
+From there, the graph nodes read them back and run the hooks at the right moments.
+
+### ToolMiddleware — wrapping tool execution
+
+`ToolMiddleware` has two hooks:
+
+```go
+type ToolMiddleware struct {
+    Before func(ctx context.Context, mwCtx ToolMiddlewareContext) error
+    After  func(ctx context.Context, mwCtx ToolMiddlewareContext) error
+}
+```
+
+In `graph_tool.go`, `executeTool` runs them like this:
+
+1. **Before hooks** — called before `tool.Execute()`. The `ToolMiddlewareContext` carries `ToolName` and `Params` (no `Result` yet).
+2. **Tool execution** — `tool.Execute(...)` runs normally.
+3. **After hooks** — called only on success (`toolResult.Error == nil`). The context now includes a populated `Result *models.ToolExecuteOutput`.
+
+Error handling differs by error type:
+
+| Error type               | Behavior                                                        |
+| ------------------------ | --------------------------------------------------------------- |
+| `graph.InterruptError`   | Propagated immediately — execution pauses for human-in-the-loop |
+| Any other error (Before) | Archived as the tool result; execution continues                |
+| Any other error (After)  | Set as `toolResult.Error`; execution continues                  |
+
+This means a `Before` hook is the natural place to implement approval gates:
+
+```go
+Before: func(ctx context.Context, mwCtx ToolMiddlewareContext) error {
+    if mwCtx.ToolName == "delete_file" {
+        _, err := graph.Interrupt[agentState, agentStateDelta](ctx, "approve-delete", mwCtx.Params)
+        return err
+    }
+    return nil
+}
+```
+
+### StepMiddleware — wrapping step execution
+
+`StepMiddleware` also has `Before` and `After` hooks:
+
+```go
+type StepMiddleware struct {
+    Before func(ctx context.Context, mwCtx StepMiddlewareContext) error
+    After  func(ctx context.Context, mwCtx StepMiddlewareContext) error
+}
+```
+
+In `graph_terminal.go`:
+
+- **Before hooks** run inside `prepareStep`, after the step is created and `prepareStep` has run. The `StepMiddlewareContext` exposes `StepIndex`, `ToolChoice`, `ActiveTools`, `TotalToolsCalled`, `HasErrors`, and `PriorStepCount`.
+- **After hooks** run inside `endStep`, before the `StepEndPart` is emitted.
+
+Unlike `ToolMiddleware`, **any** error from a step middleware (including non-interrupt errors) aborts the entire pipeline. There is no "include and continue" path.
+
+### Why this matters for interrupt/resume
+
+The middleware layer is the primary way callers inject human-in-the-loop behavior without writing custom graph nodes. Because `InterruptError` is recognized at both the tool and step level, a middleware hook can pause execution at exactly the right boundary — before a dangerous tool call, or before a new step begins — and the existing `Resume` machinery takes over from there.
 
 ---
 
