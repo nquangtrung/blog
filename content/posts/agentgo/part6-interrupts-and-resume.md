@@ -99,13 +99,22 @@ So resume is not "start over". It is "restart from persisted superstep data".
 
 ```mermaid
 flowchart TD
-    A[Invoke] --> B[Execute superstep]
-    B --> C{Interrupt raised?}
-    C -- No --> D[Continue normal loop]
-    C -- Yes --> E[Return error with interrupt metadata]
-    E --> F[Caller collects input/approval]
-    F --> G[Resume(threadId, interruptResults)]
-    G --> H[Restore checkpoint state + steps + partial results]
+    A["Invoke"]
+    B["Execute superstep"]
+    C["Interrupt raised?"]
+    D["Continue normal loop"]
+    E["Return error with interrupt metadata"]
+    F["Caller collects input/approval"]
+    G["Resume(threadId, interruptResults)"]
+    H["Restore checkpoint state + steps + partial results"]
+
+    A --> B
+    B --> C
+    C -. No .-> D
+    C -. Yes .-> E
+    E --> F
+    F --> G
+    G --> H
     H --> B
 ```
 
